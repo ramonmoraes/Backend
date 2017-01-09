@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pessoas = [];
 var arquivo="E:/Programação/Node/MyFit/myapp/bancodados.js";
+var aux;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,10 +11,8 @@ router.get('/', function(req, res, next) {
     fs.readFile(arquivo, function read(err, data){
       if (err) {
         pessoas :[];
-      }else {
-        
-
-
+      }else{
+        pessoas=JSON.parse(data);
       }
     })
     res.render('index', { title: 'Express' , pessoas:pessoas });
@@ -34,12 +33,10 @@ pessoas.push(data);
 
 var fs = require('fs');
 fs.writeFile(arquivo, JSON.stringify(pessoas), function(err){
-
-  if(err){
+if(err){
     console.log("err");
-  }
-
-} );
+      }
+});
 
 console.log(pessoas);
   res.render('index', { title: 'Entrou no cadastro' , pessoas:pessoas });
