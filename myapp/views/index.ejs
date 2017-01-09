@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/javascripts/myapp1.js" /></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <form action="/cadastro" method="POST" onsubmit="return validar()"  >
+  First name:<br>
+  <input type="text" name="firstname" id="firstname" ><br>
+  Last name:<br>
+  <input type="text" name="lastname" id="lastname" >
+  <input type="submit" value="Enviar" />
+</form>
+<div class="container">
+
+
+<div>
+  <% for(i=0;i<pessoas.length;i++){%>
+  <ul>
+    <li>Nome: <%= pessoas[i].nome %> </li>
+    <li>Sobre: <%= pessoas[i].sobrenome %> </li>
+  </ul>
+  <%}%>
+</div>
+<div>
+  <input name="procurar" />
+  <button>procurar nome</button>
+</div>
+</div>
+
+
+
+  </body>
+</html>
