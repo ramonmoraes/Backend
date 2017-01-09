@@ -11,11 +11,12 @@ router.get('/', function(req, res, next) {
       if (err) {
         pessoas :[];
       }else {
-        pessoas= JSON.parse(data);
-        res.render('index', { title: 'Express' , pessoas:pessoas });
+        
+
 
       }
     })
+    res.render('index', { title: 'Express' , pessoas:pessoas });
 });
 
 /* Cadastro          \/ */
