@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var pessoas = [];
 var arquivo="E:/Programação/Node/MyFit/myapp/bancodados.js";
-var aux;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,7 +9,7 @@ router.get('/', function(req, res, next) {
     var fs = require("fs");
     fs.readFile(arquivo, function read(err, data){
       if (err) {
-        pessoas :[];
+        return;
       }else{
         pessoas=JSON.parse(data);
       }
