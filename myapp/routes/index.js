@@ -9,12 +9,15 @@ router.get('/', function(req, res, next) {
     var fs = require("fs");
     fs.readFile(arquivo, function read(err, data){
       if (err) {
+        console.log("nao ta lendo essa merda");
+        res.render('index', { title: 'Express' , pessoas:[] });
         return;
       }else{
         pessoas=JSON.parse(data);
+        res.render('index', { title: 'Express' , pessoas:pessoas });
       }
     })
-    res.render('index', { title: 'Express' , pessoas:pessoas });
+
 });
 
 /* Cadastro          \/ */
