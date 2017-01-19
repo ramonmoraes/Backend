@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/stylegenius.css' />
+  <script type="text/javascript" src="/javascripts/geniusgame.js" /></script>
+  <meta name="viewport" content="width=device-width, inicial-scale=1.0" =>
+</head>
+<body>
+
+<div class="console">
+  <h3 class="ramon"><a href='/'>Home</a></h3>
+  <h1>Genius.</h1>
+  <div class="score">
+    <form method="POST" action="/genius/ranking" onsubmit="return ranking()" >
+      <h3>Score :<spam id ='pontos' name='pontos'> 0 </spam> </h3>
+      <input type="text" name="score" class="A" ><input />
+      <input type="submit" value="Enviar" />
+
+    </form>
+     <button class='comecar' onclick='comecarjogo()'> Começar! </button>
+   </div>
+      <div class='container'>
+
+      <div class='botao amarelo' name='amarelo' onclick='inserir(1)'>     </div>
+      <div class='botao vermelho'  name='vermelho' onclick='inserir(2)'>  </div>
+      <div class='botao azul' name='azul' onclick='inserir(3)'>           </div>
+      <div class='botao roxo' name='roxo'onclick='inserir(4)'>            </div>
+
+  </div>
+
+</div>
+<div class="ranking console">
+  <h3>Ranking</h3>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+</div>
+</body>
+
+</html>

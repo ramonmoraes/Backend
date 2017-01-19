@@ -6,35 +6,54 @@
     <script type="text/javascript" src="/javascripts/myapp1.js" /></script>
   </head>
   <body>
+    <div class="newbody">
+
+
+    <div class="box">
     <h1><%= title %></h1>
-
+    <a href="/">Home</a>
     <form action="/cadastro" method="POST" onsubmit="return validar()"  >
-  First name:<br>
-  <input type="text" name="firstname" id="firstname" ><br>
-  Last name:<br>
-  <input type="text" name="lastname" id="lastname" >
-  <input type="submit" value="Enviar" />
-</form>
-<div class="container">
-
-
-<div>
+    First name:<br>
+    <input type="text" name="firstname" id="firstname" ><br>
+    Last name:<br>
+    <input type="text" name="lastname" id="lastname" >
+    <input type="submit" value="Enviar" />
+    </form>
+    <h3>Server estudo Ramon</h3>
+</div>
+<div class="box">
+  <h3>Database</h3>
   <% for(i=0;i<pessoas.length;i++){%>
   <ul>
-    <li>Nome: <%= pessoas[i].nome %> </li>
+    <li>Nome: <%= pessoas[i].nome %>  </li>
     <li>Sobre: <%= pessoas[i].sobrenome %> </li>
   </ul>
   <%}%>
 </div>
-<div>
-  <form>Procurar:
+<div class="box">
+  <form action="/procurar" method="GET">Procurar:
     <input type="text" name="procurar"/>
     <input type="submit" value="click!" />
+    <h3>Resultados da procura: </h3>
+
+      <% for(i=0;i<achei.length;i++){%>
+        <div class="box procura">
+
+      <ul>
+        <li>Nome: <%= achei[i].nome %> <a href='/pessoa' + <% i %>> >+< </a> </li>
+        <li>Sobre: <%= achei[i].sobrenome %> </li>
+      </ul>
+
+      </div>
+      <%}%>
+
+    </div>
   </form>
+
 </div>
-</div>
-
-
-
-  </body>
+  </div>
+</body>
+<footer>
+    <% include templates/footer.ejs %>
+</footer>
 </html>
