@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var genius = require('./routes/genius')
+var genius = require('./routes/genius');
 var users = require('./routes/users');
 
 var app = express();

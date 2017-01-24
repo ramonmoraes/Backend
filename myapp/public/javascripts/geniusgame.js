@@ -65,7 +65,8 @@ function comecarjogo(){
 
 function inserir(n){
   animacao(n);
-  document.getElementById("pontos").innerHTML = tempo*tempo-3+count;
+  document.getElementById("pontos").innerHTML = tempo*tempo-3+count; // Mostrar SCORE
+  document.getElementById("score").value = tempo*tempo-3+count; // Score Server
   setTimeout(sequencia_usuario.push(n),150);
         if(sequencia_usuario[t]==sequencia_gerada[t]){
           audio(correct);
