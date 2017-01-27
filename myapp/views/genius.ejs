@@ -15,6 +15,7 @@
       <form method="POST" action="/genius/ranking/" onsubmit="return ranking()" >
       <h3>Score :<div id ='pontos' name='pontos'> 0 </div> </h3>
       <input type="hidden" name="score" id="score" /> <!--  Colocar type=hidden, e usar javascript para mudar o valor-->
+      <input type="text" name="nome" value='nome' />
       <input type="submit" value="Enviar" class='comecar' />
 
     </form>
@@ -32,9 +33,19 @@
 </div>
 <div class="ranking console">
   <h3>Ranking</h3>
-  <div>
-    <div class='us_nome' ></div>
-    <div class='us_score'></div>
+  <div class="ranking_wrapper">
+
+
+  <div class='ranking_box' >
+    <% for(i=0;i<20;i++){ %>
+      <li> <%=i+1%> - <%= lista[i].nome %></li>
+      <% } %>
+  </div>
+  <div class='ranking_box'>
+        <% for(i=0;i<20;i++){ %>
+          <li> <%= lista[i].pontos %> pontos.</li>
+          <% } %>
+  </div>
   </div>
 </div>
 </body>
