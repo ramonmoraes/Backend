@@ -11,18 +11,24 @@ res.render('genius', { title: 'Genius!!!', lista:lista}); // renderizando a 'pag
 });
 // Fim router.get/
 
-function ordenar_lista(item){
-  for(var i=0; i<item.length; i++){
-    if(item[i].pontos<item[i+1].pontos){
-      var aux = item[i+1];
-      item[i+1]=item[i];
-      item[i]=aux;
+function buble(item){ // primeira coisa a fazer é transformar todos os 'scores' de string para number;
+    for (var i = 0; i < item.length; i++) { // <--- Conversão de todos os pontos de string para number;
+      var aux=parseInt(item[i].pontos);
+      if (aux==null){aux=0;}
+      item[i].pontos=aux;
+                }
+
+    for (var i = 0; i < item.length; i++) { // Organizar pelo metodo buble;
+      var aux = item[i].pontos;
+      if(item[i]>item[i+1]){
+        aux=item[i+1].pontos;
+        item[i+1].pontos=item[i].pontos;
+        item[i].pontos=aux;
+      }
     }
-  }
-  for(var i=0; i<item.length; i++){
-    console.log(item[i]);
-  }
-  return item;
+    for (var i = 0; i < item.length; i++) {
+      console.log(item[i]);
+    }
 }
 
 function inserir_db(item){ // OK \/ \/ \/ \/ \/ \/ \/ \/
@@ -46,7 +52,7 @@ function ler_db(){
       resultado_array.push(doc);
       // lista=JSON.stringify(resultado_array);
       lista=resultado_array;
-      // lista_ordenada=ordenar_lista(lista);
+      buble(lista);
 
     }, function(){
       db.close();
