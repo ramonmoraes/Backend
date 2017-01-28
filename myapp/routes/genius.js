@@ -12,11 +12,11 @@ res.render('genius', { title: 'Genius!!!', lista:lista}); // renderizando a 'pag
 // Fim router.get/
 
 function buble(item){ // primeira coisa a fazer é transformar todos os 'scores' de string para number;
-    // for (var i = 0; i < item.length; i++) { // <--- Conversão de todos os pontos de string para number;
-    //   var aux=parseInt(item[i].pontos);
-    //   if (aux==null){aux=0;}
-    //   item[i].pontos=aux;
-    //             }
+    for (var i = 0; i < item.length; i++) { // <--- Conversão de todos os pontos de string para number;
+      var aux=parseInt(item[i].pontos);
+      if (aux==null){aux=0;}
+      item[i].pontos=aux;
+                }
 
     for (var i = 0; i < item.length; i++) { // Organizar pelo metodo buble;
       var aux = item[i].pontos;
@@ -26,9 +26,7 @@ function buble(item){ // primeira coisa a fazer é transformar todos os 'scores'
         item[i].pontos=aux;
       }
     }
-    // for (var i = 0; i < item.length; i++) {
-    //   console.log(item[i]);
-    // }
+
 }
 
 
@@ -49,24 +47,15 @@ function ler_db(){
     assert.equal(null, err);
     var indicador = db.collection('ranking').find();
     indicador.forEach(function(doc, err){
-      assert.equal(null,err);
-      resultado_array.push(doc);
-      // lista=JSON.stringify(resultado_array);
-      lista=resultado_array;
-      buble(lista, function(){
-        for (var i = 0; i < item.length; i++) { // <--- Conversão de todos os pontos de string para number;
-          var aux=parseInt(item[i].pontos);
-          if (aux==null){aux=0;}
-          item[i].pontos=aux;
-                    }
-                  console.log('----------------------'+lista+'------------------');
-                  buble();
-
-      });
-
+    assert.equal(null,err);
+    resultado_array.push(doc);
+    // lista=JSON.stringify(resultado_array);
+    lista=resultado_array;
+    buble(lista);
     }, function(){
       db.close();
       console.log("---Foi lida a lista---");
+      console.log(lista);
     });
   });
 }
