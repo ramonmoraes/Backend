@@ -12,13 +12,15 @@ res.render('genius', { title: 'Genius!!!', lista:lista}); // renderizando a 'pag
 // Fim router.get/
 
 function buble(item){ // primeira coisa a fazer é transformar todos os 'scores' de string para number;
-    for (var i = 0; i < item.length; i++) { // <--- Conversão de todos os pontos de string para number;
-      var aux=parseInt(item[i].pontos);
-      if (aux==null){aux=0;}
-      item[i].pontos=aux;
-                }
 
-    for (var i = 0; i < item.length; i++) { // Organizar pelo metodo buble;
+    for (var i = 0; i < item.length; i++) {   // Organizar pelo metodo buble;
+          for (var j = 0; j < item.length; j++) { // <--- Conversão de todos os pontos de string para number;
+            var aux=parseInt(item[j].pontos);
+            if(isNaN(aux)){ // Se for NaN, ou seja, nao havia score quando foi enviado, sera considerado 0;
+              aux=0;
+            }
+            item[j].pontos=aux;
+                      }
       var aux = item[i].pontos;
       if(item[i]>item[i+1]){
         aux=item[i+1].pontos;
@@ -54,7 +56,7 @@ function ler_db(){
     buble(lista);
     }, function(){
       db.close();
-      console.log("---Foi lida a lista---");
+      // console.log("---Foi lida a lista---");
       console.log(lista);
     });
   });
